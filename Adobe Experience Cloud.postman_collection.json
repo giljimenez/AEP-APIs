@@ -1,0 +1,272 @@
+{
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          ""
+        ],
+        "id": "ca0c964a-a8ad-4f4b-9cd2-ba66dd5d1012",
+        "type": "text/javascript"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          ""
+        ],
+        "id": "545148a1-91a3-4d53-87f6-c61d6b49b179",
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "info": {
+    "_postman_id": "993c1dbc-04f1-4cbc-bbd3-11dc7001d916",
+    "description": "# Adobe Experience Cloud APIs\n\nSee more at [Adobe.IO](https://www.adobe.io/apis.html) or find me at [GilJimenez.com](https://giljimenez.com?cid=SM:GH:20200311:user_growth:postman:)",
+    "name": "Adobe Experience Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "item": [
+        {
+          "_postman_isSubFolder": true,
+          "description": "Adobe Analytics APIS\nSee official docs at: https://adobedocs.github.io/analytics-2.0-apis/",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "id": "e284d7c2-cedd-4c68-bb68-4eb8f1d4fc7f",
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "id": "7377193f-615a-45d9-9932-6e44967399f3",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "item": [
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "Suites",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "collections",
+                        "suites"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "expansion",
+                          "value": "name,parentRsid,currency,calendarType,timezoneZoneinfo"
+                        }
+                      ],
+                      "raw": "https://analytics.adobe.io/api/{{company}}/collections/suites?expansion=name,parentRsid,currency,calendarType,timezoneZoneinfo"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Suites by RSID",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "collections",
+                        "suites",
+                        "{{rsid}}"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "expansion",
+                          "value": "name,parentRsid,currency"
+                        }
+                      ],
+                      "raw": "https://analytics.adobe.io/api/{{company}}/collections/suites/{{rsid}}?expansion=name,parentRsid,currency"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Collection",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "Users",
+                  "request": {
+                    "description": "Returns a list of users for the current user's login company",
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "users"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://analytics.adobe.io/api/{{company}}/users"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Users Me",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "users",
+                        "me"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://analytics.adobe.io/api/{{company}}/users/me"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Users",
+              "protocolProfileBehavior": {}
+            }
+          ],
+          "name": "2.0",
+          "protocolProfileBehavior": {}
+        }
+      ],
+      "name": "Adobe Analytics",
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
