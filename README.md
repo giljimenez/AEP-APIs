@@ -4,7 +4,7 @@ Aggregating the Adobe Experience Cloud APIs for use in Postman or other API clie
 
 ## SaaS
 
-:white_circle: Analytics
+### Analytics
 
 :white_circle: calculatedmetrics
 :radio_button: collections
@@ -15,14 +15,29 @@ Aggregating the Adobe Experience Cloud APIs for use in Postman or other API clie
 :radio_button: segments
 :radio_button: users
 
-:white_circle: Target
+### Target
 
-:white_circle: Audience Manager
+:radio_button: List Activities
+:radio_button: Get AB Activity by ID
+:radio_button: Delete AB activity by ID
+:radio_button: Create AB Activity
+:radio_button: Update AB Activity
+:radio_button: Get XT Activity by ID
+:radio_button: Delete XT Activity by ID
+:radio_button: Create XT Activity
+:radio_button: Update XT Activity
+:radio_button: Update Activity Name
+:radio_button: Update Activity State
+:radio_button: Update Activity Priority
+:radio_button: Update Activity Schedule
+:radio_button: Get Activity Changelog
+
+### Audience Manager
 
 ## Strech Goal
 
-:white_circle: Campaign Standard 
+### Campaign Standard 
 
-:white_circle: Privacy Service 
+### Privacy Service 
 
-:white_circle: Any Requests?
+### Any Requests?
