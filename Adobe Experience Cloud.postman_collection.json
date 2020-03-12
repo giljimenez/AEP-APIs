@@ -540,6 +540,50 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "Delete Segment",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "segments",
+                        "{{segment_id}}"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://analytics.adobe.io/api/{{company}}/segments/{{segment_id}}"
+                    }
+                  },
+                  "response": []
                 }
               ],
               "name": "Segments",
@@ -551,6 +595,1516 @@
         }
       ],
       "name": "Adobe Analytics",
+      "protocolProfileBehavior": {}
+    },
+    {
+      "item": [
+        {
+          "_postman_isSubFolder": true,
+          "item": [
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "List activities",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get AB Activity by ID",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "168798"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/168798"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete AB Activity by ID",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "178096"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/178096"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create AB Activity",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\": \"New API Activity\",\n    \"startsAt\": \"2017-05-01T08:00Z\",\n    \"endsAt\": \"2017-09-01T07:59:59Z\",\n    \"state\": \"saved\",\n    \"priority\": 100,\n    \"autoAllocateTraffic\": {\n        \"enabled\": false,\n        \"successEvaluationCriteria\": \"conversion_rate\"\n    },\n    \"locations\": {\n        \"mboxes\": [\n            {\n                \"locationLocalId\": 0,\n                \"name\": \"x1-serverside-ab\"\n            }\n        ]\n    },\n    \"experiences\": [\n        {\n            \"experienceLocalId\": 0,\n            \"name\": \"Experience A\",\n            \"visitorPercentage\": 34,\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 395818\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 1,\n            \"name\": \"Experience B\",\n            \"visitorPercentage\": 33,\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 395819\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 2,\n            \"name\": \"Experience C\",\n            \"visitorPercentage\": 33,\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 395820\n                }\n            ]\n        }\n    ],\n    \"metrics\": [\n        {\n            \"metricLocalId\": 32767,\n            \"name\": \"MY PRIMARY GOAL\",\n            \"conversion\": true,\n            \"mboxes\": [\n                {\n                    \"name\": \"order-complete\",\n                    \"successEvent\": \"mbox_shown\"\n                }\n            ],\n            \"action\": {\n                \"type\": \"count_once\"\n            }\n        }\n    ]\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "POST",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        ""
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update AB Activity",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"New Activity Name\",\n  \"state\": \"approved\",\n  \"priority\": 10,\n  \"locations\": {\n    \"mboxes\": [\n      {\n        \"locationLocalId\": 0,\n        \"name\": \"mbox_1\"\n      },\n      {\n        \"locationLocalId\": 1,\n        \"name\": \"mbox_2\"\n      },\n      {\n        \"locationLocalId\": 2,\n        \"name\": \"mbox_3\"\n      }\n    ]\n  },\n  \"experiences\": [\n    {\n      \"experienceLocalId\": 0,\n      \"name\": \"Tom Hanks Cast Away\",\n      \"offerLocations\": [\n        {\n          \"locationLocalId\": 0,\n          \"offerId\": 400546\n        },\n        {\n          \"locationLocalId\": 1,\n          \"offerId\": 400547\n        },\n        {\n          \"locationLocalId\": 2,\n          \"offerId\": 400546\n        }\n      ]\n    },\n    {\n      \"experienceLocalId\": 1,\n      \"name\": \"Default\",\n      \"offerLocations\": [\n        {\n          \"locationLocalId\": 0,\n          \"offerId\": 400546\n        },\n        {\n          \"locationLocalId\": 1,\n          \"offerId\": 400547\n        },\n        {\n          \"locationLocalId\": 2,\n          \"offerId\": 400546\n        }\n      ]\n    }\n  ],\n  \"metrics\": [\n    {\n      \"metricLocalId\": 3,\n      \"name\": \"display about\",\n      \"mboxes\": [\n        {\n          \"name\": \"event_1\",\n          \"successEvent\": \"mbox_shown\"\n        }\n      ]\n    },\n    {\n      \"metricLocalId\": 4,\n      \"name\": \"display hero\",\n      \"mboxes\": [\n        {\n          \"name\": \"event_2\",\n          \"successEvent\": \"mbox_shown\"\n        }\n      ]\n    },\n    {\n      \"metricLocalId\": 32767,\n      \"name\": \"display userimg\",\n      \"conversion\": true,\n      \"action\": {\n        \"type\": \"count_once\"\n      },\n      \"mboxes\": [\n        {\n          \"name\": \"event_3\",\n          \"successEvent\": \"mbox_shown\"\n        }\n      ]\n    }\n  ],\n  \"analytics\": {\n    \"reportSuite\": \"mydemoreportsuite\",\n    \"dataCollectionHost\": \"mydemoreportsuite.sc.omniture.com\"\n  }\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "183916"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/183916"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get XT Activity by ID ",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "xt",
+                        "167169"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/xt/167169"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete XT Activity by ID",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "xt",
+                        "168333"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/xt/168333"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create XT Activity",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\": \"New XT API Activity\",\n    \"state\": \"saved\",\n    \"priority\": 10,\n    \"autoAllocateTraffic\": {\n        \"enabled\": false,\n        \"successEvaluationCriteria\": \"conversion_rate\"\n    },\n    \"locations\": {\n        \"mboxes\": [\n            {\n                \"locationLocalId\": 0,\n                \"name\": \"a1-serverside-xt\"\n            }\n        ]\n    },\n    \"experiences\": [\n        {\n            \"experienceLocalId\": 0,\n            \"name\": \"USA Experience\",\n            \"audienceIds\": [\n                1224696\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396067\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 1,\n            \"name\": \"UK Experience\",\n            \"audienceIds\": [\n                1224698\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396064\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 2,\n            \"name\": \"France Experience\",\n            \"audienceIds\": [\n                1224699\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396065\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 3,\n            \"name\": \"Australia Experience\",\n            \"audienceIds\": [\n                1224700\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396066\n                }\n            ]\n        }\n    ],\n    \"metrics\": [\n        {\n            \"metricLocalId\": 32767,\n            \"name\": \"metric_placeholder\",\n            \"conversion\": true,\n            \"mboxes\": [\n                {\n                    \"name\": \"conversion_placeholder\",\n                    \"successEvent\": \"mbox_shown\"\n                }\n            ],\n            \"action\": {\n                \"type\": \"count_once\"\n            }\n        }\n    ],\n    \"analytics\": {\n        \"reportSuite\": \"adobeinternalags306westeros\",\n        \"dataCollectionHost\": \"adobeinternalags306.sc.omtrdc.net\"\n    }\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "POST",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "xt",
+                        ""
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/xt/"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update XT Activity",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\": \"New XT API Activity 2\",\n    \"state\": \"saved\",\n    \"priority\": 10,\n    \"autoAllocateTraffic\": {\n        \"enabled\": false,\n        \"successEvaluationCriteria\": \"conversion_rate\"\n    },\n    \"locations\": {\n        \"mboxes\": [\n            {\n                \"locationLocalId\": 0,\n                \"name\": \"a1-serverside-xt\"\n            }\n        ]\n    },\n    \"experiences\": [\n        {\n            \"experienceLocalId\": 0,\n            \"name\": \"USA Experience\",\n            \"audienceIds\": [\n                1224696\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396067\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 1,\n            \"name\": \"UK Experience\",\n            \"audienceIds\": [\n                1224698\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396064\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 2,\n            \"name\": \"France Experience\",\n            \"audienceIds\": [\n                1224699\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396065\n                }\n            ]\n        },\n        {\n            \"experienceLocalId\": 3,\n            \"name\": \"Australia Experience\",\n            \"audienceIds\": [\n                1224700\n            ],\n            \"offerLocations\": [\n                {\n                    \"locationLocalId\": 0,\n                    \"offerId\": 396066\n                }\n            ]\n        }\n    ],\n    \"metrics\": [\n        {\n            \"metricLocalId\": 32767,\n            \"name\": \"metric_placeholder\",\n            \"conversion\": true,\n            \"mboxes\": [\n                {\n                    \"name\": \"conversion_placeholder\",\n                    \"successEvent\": \"mbox_shown\"\n                }\n            ],\n            \"action\": {\n                \"type\": \"count_once\"\n            }\n        }\n    ],\n    \"analytics\": {\n        \"reportSuite\": \"adobeinternalags306westeros\",\n        \"dataCollectionHost\": \"adobeinternalags306.sc.omtrdc.net\"\n    }\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "xt",
+                        "183919"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/xt/183919"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Activity Name",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\"name\": \"My XT Activity\"\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "168333",
+                        "name"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/168333/name"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Activity State",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\"state\": \"deactivated\"\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "168816",
+                        "state"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/168816/state"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Activity Schedule",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\"startsAt\": \"2017-05-01T08:00Z\",\n\"endsAt\": \"2017-09-01T07:59:59Z\"\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "168816",
+                        "schedule"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/168816/schedule"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Activity Priority",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\"priority\": \"110\"\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "168816",
+                        "priority"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/168816/priority"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get Activity Changelog",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "173788",
+                        "changelog"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/173788/changelog"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Activities",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "List offers",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "offers"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/offers?limit=10"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get Offer by ID",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "offers",
+                        "content",
+                        "391902"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/offers/content/391902"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Offer",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": " {\n \"name\": \"My new offer\",\n \"content\": \"<div>The content of the offer</div>\"\n }\n"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "POST",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "offers",
+                        "content"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/offers/content"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Offer by ID",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": " {\n  \"name\": \"Your existing offer\",\n  \"content\": \"<div>Updated content</div>\"\n }\n"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "offers",
+                        "content",
+                        "438180"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/offers/content/438180"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Offer by ID",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "offers",
+                        "content",
+                        "438180"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/offers/content/438180"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Offers",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "List Audiences",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "audiences",
+                        ""
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "50"
+                        },
+                        {
+                          "key": "sortBy",
+                          "value": "-name"
+                        }
+                      ],
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/audiences/?limit=50&sortBy=-name"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get Audience by ID",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "offers",
+                        "content",
+                        "391902"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/offers/content/391902"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Audience",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"New Audience\",\n  \"description\":\"Description for my audience\",\n    \"targetRule\": {\n        \"and\": [\n            {\n                \"page\": \"url\",\n        \"equals\":[\n          \"http://www.myhomepage.com/\"\n        ]\n            },\n            {\n                \"geo\": \"region\",\n                \"matches\": [\n                    \"california\"\n                ]\n            }\n        ]\n    }\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "POST",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "audiences"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/audiences"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Audience by ID",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"Homepage visitors from California\",\n  \"description\":\"Description for my audience\",\n    \"targetRule\": {\n        \"and\": [\n            {\n                \"page\": \"url\",\n        \"equals\":[\n          \"http://www.mynewhomepage.com/\"\n        ]\n            },\n            {\n                \"geo\": \"region\",\n                \"matches\": [\n                    \"california\"\n                ]\n            }\n        ]\n    }\n}"
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "audiences",
+                        "1537195"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/audiences/1537195"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Audience by ID",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "audiences",
+                        "1537214"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/audiences/1537214"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Audiences",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "List Properties",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "properties"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/properties"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get property by ID",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "properties",
+                        "{{propertyID}}"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/properties/{{propertyID}}"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Properties",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "Get AB Peformance report",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "166423",
+                        "report",
+                        "performance"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/166423/report/performance"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get XT Peformance report",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "167169",
+                        "report",
+                        "performance"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/167169/report/performance"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get AP Peformance report",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "abt",
+                        "123456",
+                        "report",
+                        "performance"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/abt/123456/report/performance"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get AB Audit Report",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "activities",
+                        "ab",
+                        "166423",
+                        "report",
+                        "orders"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/activities/ab/166423/report/orders"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Reports",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "List mboxes",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "mboxes"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "limit",
+                          "value": "5"
+                        }
+                      ],
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/mboxes?limit=5"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "List mbox parameters",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "mbox",
+                        "global-nav"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/mbox/global-nav"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "List profile parameters",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "profileattributes",
+                        "mbox"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/profileattributes/mbox"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "List Environments",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "X-Api-Key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/vnd.adobe.target.v1+json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "mc",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "{{tenant}}",
+                        "target",
+                        "environments"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://mc.adobe.io/{{tenant}}/target/environments"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Mboxes",
+              "protocolProfileBehavior": {}
+            }
+          ],
+          "name": "Admin APIs",
+          "protocolProfileBehavior": {}
+        },
+        {
+          "_postman_isSubFolder": true,
+          "item": [
+            {
+              "name": "Profile Fetch by tntid",
+              "request": {
+                "header": [],
+                "method": "GET",
+                "url": {
+                  "host": [
+                    "{{clientcode}}",
+                    "tt",
+                    "omtrdc",
+                    "net"
+                  ],
+                  "path": [
+                    "rest",
+                    "v1",
+                    "profiles",
+                    "1234567890-1234567890"
+                  ],
+                  "protocol": "http",
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "{{clientcode}}"
+                    }
+                  ],
+                  "raw": "http://{{clientcode}}.tt.omtrdc.net/rest/v1/profiles/1234567890-1234567890?client={{clientcode}}"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Profile Fetch by ThirdpartyId",
+              "request": {
+                "header": [],
+                "method": "GET",
+                "url": {
+                  "host": [
+                    "{{clientcode}}",
+                    "tt",
+                    "omtrdc",
+                    "net"
+                  ],
+                  "path": [
+                    "rest",
+                    "v1",
+                    "profiles",
+                    "thirdPartyId",
+                    "gilATadobe"
+                  ],
+                  "protocol": "http",
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "{{clientcode}}"
+                    }
+                  ],
+                  "raw": "http://{{clientcode}}.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/gilATadobe?client={{clientcode}}"
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Profile Update",
+              "request": {
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "url": {
+                  "host": [
+                    "{{clientcode}}",
+                    "tt",
+                    "omtrdc",
+                    "net"
+                  ],
+                  "path": [
+                    "m2",
+                    "{{clientcode}}",
+                    "profile",
+                    "update"
+                  ],
+                  "protocol": "https",
+                  "query": [
+                    {
+                      "key": "mbox3rdPartyId",
+                      "value": "gilATadobe"
+                    },
+                    {
+                      "key": "profile.attr1",
+                      "value": "x"
+                    },
+                    {
+                      "key": "profile.attr2",
+                      "value": "y"
+                    },
+                    {
+                      "key": "profile.attr3",
+                      "value": "z"
+                    }
+                  ],
+                  "raw": "https://{{clientcode}}.tt.omtrdc.net/m2/{{clientcode}}/profile/update?mbox3rdPartyId=gilATadobe&profile.attr1=x&profile.attr2=y&profile.attr3=z"
+                }
+              },
+              "response": []
+            }
+          ],
+          "name": "Profile API",
+          "protocolProfileBehavior": {}
+        }
+      ],
+      "name": "Adobe Target",
       "protocolProfileBehavior": {}
     }
   ],
