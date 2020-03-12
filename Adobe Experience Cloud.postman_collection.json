@@ -22,7 +22,7 @@
     }
   ],
   "info": {
-    "_postman_id": "993c1dbc-04f1-4cbc-bbd3-11dc7001d916",
+    "_postman_id": "01705d69-4d92-43d9-838f-d03336b4f67d",
     "description": "# Adobe Experience Cloud APIs\n\nSee more at [Adobe.IO](https://www.adobe.io/apis.html) or find me at [GilJimenez.com](https://giljimenez.com?cid=SM:GH:20200311:user_growth:postman:)",
     "name": "Adobe Experience Cloud",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -257,6 +257,292 @@
                 }
               ],
               "name": "Users",
+              "protocolProfileBehavior": {}
+            },
+            {
+              "_postman_isSubFolder": true,
+              "item": [
+                {
+                  "name": "Segments",
+                  "request": {
+                    "description": "Retrieve All Segments",
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "segments"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "filterByPublishedSegments",
+                          "value": "all"
+                        },
+                        {
+                          "key": "sortDirection",
+                          "value": "ASC"
+                        },
+                        {
+                          "key": "sortProperty",
+                          "value": "name"
+                        },
+                        {
+                          "key": "expansion",
+                          "value": "reportSuiteName,ownerFullName,modified,tags,compatibility,definition,publishingStatus,definitionLastModified,categories"
+                        },
+                        {
+                          "key": "includeType",
+                          "value": "all"
+                        }
+                      ],
+                      "raw": "https://analytics.adobe.io/api/{{company}}/segments?filterByPublishedSegments=all&sortDirection=ASC&sortProperty=name&expansion=reportSuiteName,ownerFullName,modified,tags,compatibility,definition,publishingStatus,definitionLastModified,categories&includeType=all"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Segments By ID",
+                  "request": {
+                    "description": "Get a Single Segment",
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "segments",
+                        "{{segment_id}}"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "expansion",
+                          "value": "reportSuiteName,ownerFullName,modified,tags,compatibility,definition,publishingStatus,definitionLastModified,categories"
+                        }
+                      ],
+                      "raw": "https://analytics.adobe.io/api/{{company}}/segments/{{segment_id}}?expansion=reportSuiteName,ownerFullName,modified,tags,compatibility,definition,publishingStatus,definitionLastModified,categories"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Create Segment",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"Visitor With No First Launch\",\n  \"description\": \"Test segment created via API\",\n  \"rsid\": \"ags306template\",\n  \"reportSuiteName\": \"Global\",\n  \"owner\": {\n    \"id\": 558457,\n    \"name\": \"Gil  Jimenez\",\n    \"login\": \"gil\"\n  },\n  \"definition\": {\n    \"container\": {\n      \"func\": \"container\",\n      \"pred\": {\n        \"evt\": {\n          \"func\": \"event\",\n          \"name\": \"metrics/mobileinstalls\"\n        },\n        \"func\": \"not-event-exists\",\n        \"description\": \"First Launches\"\n      },\n      \"context\": \"visitors\"\n    },\n    \"func\": \"segment\",\n    \"version\": [\n      1,\n      0,\n      0\n    ]\n  },\n  \"tags\": []\n}"
+                    },
+                    "description": "Creates Segment",
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "segments"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://analytics.adobe.io/api/{{company}}/segments"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Segment",
+                  "request": {
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"Visitor With No First Launch\",\n  \"description\": \"Test segment created via API\",\n  \"rsid\": \"ags306template\",\n  \"reportSuiteName\": \"Global\",\n  \"owner\": {\n    \"id\": 558457,\n    \"name\": \"Gil  Jimenez\",\n    \"login\": \"gil\"\n  },\n  \"definition\": {\n    \"container\": {\n      \"func\": \"container\",\n      \"pred\": {\n        \"evt\": {\n          \"func\": \"event\",\n          \"name\": \"metrics/mobileinstalls\"\n        },\n        \"func\": \"not-event-exists\",\n        \"description\": \"First Launches\"\n      },\n      \"context\": \"visitors\"\n    },\n    \"func\": \"segment\",\n    \"version\": [\n      1,\n      0,\n      0\n    ]\n  },\n  \"tags\": []\n}"
+                    },
+                    "description": "Update a Segment",
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "segments",
+                        "{{segment_id}}"
+                      ],
+                      "protocol": "https",
+                      "raw": "https://analytics.adobe.io/api/{{company}}/segments/{{segment_id}}"
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Validate Segments",
+                  "request": {
+                    "header": [
+                      {
+                        "key": "x-api-key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "x-proxy-global-company-id",
+                        "value": "{{company}}"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{access_token}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "url": {
+                      "host": [
+                        "analytics",
+                        "adobe",
+                        "io"
+                      ],
+                      "path": [
+                        "api",
+                        "{{company}}",
+                        "segments"
+                      ],
+                      "protocol": "https",
+                      "query": [
+                        {
+                          "key": "filterByPublishedSegments",
+                          "value": "all"
+                        },
+                        {
+                          "key": "sortDirection",
+                          "value": "ASC"
+                        },
+                        {
+                          "key": "sortProperty",
+                          "value": "name"
+                        },
+                        {
+                          "key": "expansion",
+                          "value": "reportSuiteName,ownerFullName,modified,tags,compatibility,definition,publishingStatus,definitionLastModified,categories"
+                        },
+                        {
+                          "key": "includeType",
+                          "value": "all"
+                        }
+                      ],
+                      "raw": "https://analytics.adobe.io/api/{{company}}/segments?filterByPublishedSegments=all&sortDirection=ASC&sortProperty=name&expansion=reportSuiteName,ownerFullName,modified,tags,compatibility,definition,publishingStatus,definitionLastModified,categories&includeType=all"
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "name": "Segments",
               "protocolProfileBehavior": {}
             }
           ],
