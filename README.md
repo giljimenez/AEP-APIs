@@ -28,6 +28,10 @@ Aggregating the Adobe Experience Cloud APIs for use in Postman or other API clie
 
 ### Campaign Standard 
 
-### Privacy Service 
+### User Management :heavy_check_mark:
+
+### Triggers :heavy_check_mark:
+
+### Privacy Service :heavy_check_mark:
 
 ### Any Requests?
