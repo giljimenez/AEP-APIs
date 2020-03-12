@@ -2108,6 +2108,28 @@
           "item": [
             {
               "_postman_isSubFolder": true,
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "id": "dfc1386d-c402-42b7-84ed-ae3c5a1974ed",
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "id": "9d51a6af-b633-4f81-96e3-406571840bbe",
+                    "type": "text/javascript"
+                  }
+                }
+              ],
               "item": [
                 {
                   "name": "List designs",
@@ -2677,11 +2699,33 @@
                   ]
                 }
               ],
-              "name": "designs",
+              "name": "Designs",
               "protocolProfileBehavior": {}
             },
             {
               "_postman_isSubFolder": true,
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "id": "5fd9e43a-7517-4aaf-940d-af052bc6d905",
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "id": "a1aecbfe-f557-4f8e-bc24-4c543afa5115",
+                    "type": "text/javascript"
+                  }
+                }
+              ],
               "item": [
                 {
                   "name": "Delete entities",
@@ -2964,7 +3008,7 @@
                   ]
                 }
               ],
-              "name": "entities",
+              "name": "Entities",
               "protocolProfileBehavior": {}
             },
             {
@@ -7349,6 +7393,469 @@
       ],
       "name": "Adobe Target",
       "protocolProfileBehavior": {}
+    },
+    {
+      "item": [
+        {
+          "name": "List Privacy Jobs",
+          "request": {
+            "description": "\nRetrieve details of all jobs for the current logged-in user.",
+            "header": [
+              {
+                "key": "Authorization",
+                "type": "text",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "x-gw-ims-org-id",
+                "type": "text",
+                "value": "{{orgId}}"
+              },
+              {
+                "key": "x-api-key",
+                "type": "text",
+                "value": "{{api_key}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "platform",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "data",
+                "core",
+                "privacy",
+                "jobs"
+              ],
+              "protocol": "https",
+              "query": [
+                {
+                  "key": "regulation",
+                  "value": "ccpa"
+                }
+              ],
+              "raw": "https://platform.adobe.io/data/core/privacy/jobs?regulation=ccpa"
+            }
+          },
+          "response": []
+        }
+      ],
+      "name": "Privacy",
+      "protocolProfileBehavior": {}
+    },
+    {
+      "item": [
+        {
+          "name": "Get User Information",
+          "request": {
+            "description": "Retrieves the details of a single user within a specified organization, identified by email address or username and domain. Successful queries return a 200 response whose body is a single JSON structure containing the user information.",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "X-Api-Key",
+                "value": "{{api_key}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "usermanagement",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "usermanagement",
+                "organizations",
+                "{{orgId}}",
+                "users",
+                "gil@adobe.com"
+              ],
+              "protocol": "https",
+              "raw": "https://usermanagement.adobe.io/v2/usermanagement/organizations/{{orgId}}/users/gil@adobe.com"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users in a User Group or Product Profile",
+          "request": {
+            "description": "Gets a paged list of users in a specific group of an organization along with information about them. Groups can be named user groups, product profiles, or group-specific administrative groups.",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "X-Api-Key",
+                "value": "{{api_key}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "usermanagement",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "usermanagement",
+                "users",
+                "{{orgId}}",
+                "0",
+                "photoshop"
+              ],
+              "protocol": "https",
+              "raw": "https://usermanagement.adobe.io/v2/usermanagement/users/{{orgId}}/0/photoshop"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users in Organization",
+          "request": {
+            "description": "Retrieve a paged list of all users in your organization along with information about them. The number of users returned in each call is subject to change but never exceeds 200 entries. You can make multiple paginated calls to retrieve the full list of users. The domain query parameter filters the results to only return users within a specified domain.",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "X-Api-Key",
+                "value": "{{api_key}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "usermanagement",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "usermanagement",
+                "users",
+                "{{orgId}}",
+                "0"
+              ],
+              "protocol": "https",
+              "raw": "https://usermanagement.adobe.io/v2/usermanagement/users/{{orgId}}/0"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Groups and Product Profiles",
+          "request": {
+            "description": "Retrieves a paged list of all user groups and product profiles in your organization along with information about them. You can make multiple paginated calls to retrieve the full list.",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "X-Api-Key",
+                "value": "{{api_key}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "usermanagement",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "usermanagement",
+                "groups",
+                "{{orgId}}",
+                "0"
+              ],
+              "protocol": "https",
+              "raw": "https://usermanagement.adobe.io/v2/usermanagement/groups/{{orgId}}/0"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addAdobeID (WIP)",
+          "request": {
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"addAdobeID\": {\n      \"email\": \"gil.jimenez@adobe.com\"\n    }\n  }"
+            },
+            "description": "Adds a user who has an existing Adobe ID.",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "X-Api-Key",
+                "value": "{{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "url": {
+              "host": [
+                "usermanagement",
+                "adobe",
+                "io"
+              ],
+              "path": [
+                "v2",
+                "usermanagement",
+                "action",
+                "{{orgId}}"
+              ],
+              "protocol": "https",
+              "raw": "https://usermanagement.adobe.io/v2/usermanagement/action/{{orgId}}"
+            }
+          },
+          "response": []
+        }
+      ],
+      "name": "User Management API",
+      "protocolProfileBehavior": {}
+    },
+    {
+      "item": [
+        {
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.globals.unset(\"access_token\");",
+                  "var data = JSON.parse(responseBody);",
+                  "pm.globals.set(\"access_token\", data.access_token);"
+                ],
+                "id": "b0e32586-6d3c-4715-a56b-e65e37ff05e4",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "name": "Login to IMS for Triggers",
+          "request": {
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "header": [],
+            "method": "POST",
+            "url": {
+              "host": [
+                "ims-na1",
+                "adobelogin",
+                "com"
+              ],
+              "path": [
+                "ims",
+                "exchange",
+                "jwt",
+                ""
+              ],
+              "protocol": "https",
+              "query": [
+                {
+                  "key": "client_id",
+                  "value": "{{api_key}}"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{secret}}"
+                },
+                {
+                  "key": "jwt_token",
+                  "value": "{{jwt}}"
+                }
+              ],
+              "raw": "https://ims-na1.adobelogin.com/ims/exchange/jwt/?client_id={{api_key}}&client_secret={{secret}}&jwt_token={{jwt}}"
+            }
+          },
+          "response": []
+        },
+        {
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"audiences returned\"] = jsonData.audiences.length > 0"
+                ],
+                "id": "9d7641aa-736f-4ed5-b56e-364ad53a85eb",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "name": "Get Triggers Fired",
+          "request": {
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "triggers",
+                "adobe",
+                "net"
+              ],
+              "path": [
+                "v1",
+                "{{orgId}}",
+                "triggers",
+                "fired"
+              ],
+              "protocol": "https",
+              "raw": "https://triggers.adobe.net/v1/{{orgId}}/triggers/fired"
+            }
+          },
+          "response": []
+        },
+        {
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"audiences returned\"] = jsonData.audiences.length > 0"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "name": "3. Get Trigger enrichment",
+          "request": {
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "triggers",
+                "adobe",
+                "net"
+              ],
+              "path": [
+                "v1",
+                "schema",
+                "{{orgId}}",
+                "triggers",
+                "227429b1-eb75-47aa-821b-8e22741568ff",
+                "enrichments"
+              ],
+              "protocol": "https",
+              "raw": "https://triggers.adobe.net/v1/schema/{{orgId}}/triggers/227429b1-eb75-47aa-821b-8e22741568ff/enrichments"
+            }
+          },
+          "response": []
+        },
+        {
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"audiences returned\"] = jsonData.audiences.length > 0"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "name": "4. Get Trigger fired enrichments",
+          "request": {
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "method": "GET",
+            "url": {
+              "host": [
+                "triggers",
+                "adobe",
+                "net"
+              ],
+              "path": [
+                "v1",
+                "{{orgId}}",
+                "triggers",
+                "227429b1-eb75-47aa-821b-8e22741568ff",
+                "enrichments"
+              ],
+              "protocol": "https",
+              "raw": "https://triggers.adobe.net/v1/{{orgId}}/triggers/227429b1-eb75-47aa-821b-8e22741568ff/enrichments"
+            }
+          },
+          "response": []
+        }
+      ],
+      "name": "Triggers",
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Exchange JWT for Access token",
+      "request": {
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "ims-na1",
+            "adobelogin",
+            "com"
+          ],
+          "path": [
+            "ims",
+            "exchange",
+            "jwt",
+            ""
+          ],
+          "protocol": "https",
+          "query": [
+            {
+              "key": "client_id",
+              "value": "{{api_key}}"
+            },
+            {
+              "key": "client_secret",
+              "value": "{{secret}}"
+            },
+            {
+              "key": "jwt_token",
+              "value": "{{jwt}}"
+            }
+          ],
+          "raw": "https://ims-na1.adobelogin.com/ims/exchange/jwt/?client_id={{api_key}}&client_secret={{secret}}&jwt_token={{jwt}}"
+        }
+      },
+      "response": []
     }
   ],
   "protocolProfileBehavior": {}
